@@ -1,7 +1,8 @@
 # Lab 03: Book Management API
 
-## Student Details
+## Deployment
 
+Not deployed yet. The project is currently running locally on `localhost:3000`.
 
 ## Student Details
 
@@ -53,46 +54,46 @@ This project is a Book Management API developed using Node.js, Express.js and SQ
 | PUT    | `/books/:bookId/` | Update a book    |
 | DELETE | `/books/:bookId/` | Delete a book    |
 
-## Screenshots
-
 
 ## Screenshots
 
 ### 1. GET - All Books
-![Get All Books](screenshots/01-get-all-books.png)
+![Get All Books](./screenshots/get-all-books.png)
 
 ### 2. GET - Book by ID
-![Get Book by ID](screenshots/02-get-book-by-id.png)
+![Get Book by ID](./screenshots/get-book-by-id.png)
 
 ### 3. POST - Add a Book
-![Add Book](screenshots/03-post-add-book.png)
+![Add Book](./screenshots/post-add-book.png)
 
 ### 4. PUT - Update a Book
-![Update Book](screenshots/04-put-update-book.png)
+![Update Book](./screenshots/put-update-book.png)
 
 ### 5. DELETE - Delete a Book
-![Delete Book](screenshots/05-delete-book.png)
+![Delete Book](./screenshots/delete-book.png)
 
 ### 6. GET - Search Books
-![Search Books](screenshots/06-search-books.png)
+![Search Books](./screenshots/search-books.png)
 
 ### 7. GET - Sort Books
-![Sort Books](screenshots/07-sort-books.png)
+![Sort Books](./screenshots/sort-books.png)
 
 ### 8. GET - Limit Books
-![Limit Books](screenshots/08-limit-books.png)
+![Limit Books](./screenshots/limit-books.png)
 
 ### 9. GET - Offset Books
-![Offset Books](screenshots/09-offset-books.png)
+![Offset Books](./screenshots/offset-books.png)
 
 ### 10. GET - Price Filter
-![Price Filter](screenshots/10-price-filter.png)
+![Price Filter](./screenshots/price-filter.png)
 
 ### 11. POST - Validation
-![POST Validation](screenshots/11-post-validation.png)
+![POST Validation](./screenshots/post-validation.png)
 
 ### 12. GET - Book Not Found
-![Book Not Found](screenshots/12-book-not-found.png)
+![Book Not Found](./screenshots/book-not-found.png)
+
+
 
 
 ## Problems Faced and Solutions
@@ -101,6 +102,4 @@ This project is a Book Management API developed using Node.js, Express.js and SQ
 - Learned how to send JSON data through Postman.
 - Tested API operations and fixed errors.
 
-## Deployment
 
-Not deployed yet. The project is currently running locally on `localhost:3000`.
