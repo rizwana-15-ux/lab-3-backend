@@ -1,6 +1,6 @@
 # Lab 03: Book Management API
 
-## Deployment
+## Live Deployment
 
 Not deployed yet. The project is currently running locally on `localhost:3000`.
 
