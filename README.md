@@ -2,7 +2,15 @@
 
 ## Live Deployment
 
-Not deployed yet. The project is currently running locally on `localhost:3000`.
+The Book Management API is successfully deployed on Render.
+
+**Live API URL:**  
+https://lab-3-backend.onrender.com
+
+**Test the API:**  
+[GET All Books](https://lab-3-backend.onrender.com/books/)
+
+The deployed API successfully retrieves and displays all book details from the database.
 
 ## Student Details
 
