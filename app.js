@@ -1,16 +1,19 @@
 
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 
 const app = express();
 app.use(express.json());
 
+const PORT = process.env.PORT || 3000;
 const dbPath = path.join(__dirname, "books.db");
 
 let db = null;
 
+// Initialize database and start server
 const initializeDBAndServer = async () => {
   try {
     db = await open({
@@ -20,11 +23,22 @@ const initializeDBAndServer = async () => {
 
     console.log("Database connected successfully!");
 
-    app.listen(3000, () => {
-      console.log("Server running at http://localhost:3000/");
+    // Read and execute setup.sql
+    const sql = fs.readFileSync(
+      path.join(__dirname, "setup.sql"),
+      "utf8"
+    );
+
+    await db.exec(sql);
+
+    console.log("Database initialized successfully!");
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
+
   } catch (error) {
-    console.log(`Database Error: ${error.message}`);
+    console.error("Database Initialization Error:", error);
     process.exit(1);
   }
 };
@@ -34,7 +48,7 @@ app.get("/", (request, response) => {
   response.send("Book Management API is running");
 });
 
-// GET all books with search, sorting, pagination and price filter
+// GET - All books with search, sorting, pagination and price filter
 app.get("/books/", async (request, response) => {
   try {
     const {
@@ -114,14 +128,16 @@ app.get("/books/", async (request, response) => {
     const books = await db.all(query, params);
 
     response.status(200).send(books);
+
   } catch (error) {
+    console.error("GET BOOKS ERROR:", error);
     response.status(500).send({
       message: "Unable to get books",
     });
   }
 });
 
-// GET book by ID
+// GET - Book by ID
 app.get("/books/:bookId/", async (request, response) => {
   try {
     const { bookId } = request.params;
@@ -138,7 +154,9 @@ app.get("/books/:bookId/", async (request, response) => {
     }
 
     response.status(200).send(book);
+
   } catch (error) {
+    console.error("GET BOOK BY ID ERROR:", error);
     response.status(500).send({
       message: "Unable to get book",
     });
@@ -189,7 +207,9 @@ app.post("/books/", async (request, response) => {
     response.status(201).send({
       message: "Book added successfully",
     });
+
   } catch (error) {
+    console.error("POST BOOK ERROR:", error);
     response.status(500).send({
       message: "Unable to add book",
     });
@@ -254,7 +274,9 @@ app.put("/books/:bookId/", async (request, response) => {
     response.status(200).send({
       message: "Book updated successfully",
     });
+
   } catch (error) {
+    console.error("PUT BOOK ERROR:", error);
     response.status(500).send({
       message: "Unable to update book",
     });
@@ -285,7 +307,9 @@ app.delete("/books/:bookId/", async (request, response) => {
     response.status(200).send({
       message: "Book deleted successfully",
     });
+
   } catch (error) {
+    console.error("DELETE BOOK ERROR:", error);
     response.status(500).send({
       message: "Unable to delete book",
     });
